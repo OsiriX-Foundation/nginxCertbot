@@ -5,7 +5,9 @@ notifications:
 
 script:
    - docker build -t osirixfoundation/nginx-certbot:$TRAVIS_BRANCH .
-   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
 
-after_success:
+before_deploy:
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  
+deploy:
    - docker push osirixfoundation/nginx-certbot:$TRAVIS_BRANCH
