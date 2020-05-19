@@ -4,11 +4,8 @@ notifications:
   email: false
 
 script:
-   - docker build -t osirixfoundation/nginx-certbot:$TRAVIS_BRANCH .
+  - docker build -t osirixfoundation/nginx-certbot:$TRAVIS_BRANCH .
 
-before_deploy:
+after_success:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  
-deploy:
-  provider: script
-  script: docker push osirixfoundation/nginx-certbot:$TRAVIS_BRANCH
+  - docker push osirixfoundation/nginx-certbot:$TRAVIS_BRANCH
