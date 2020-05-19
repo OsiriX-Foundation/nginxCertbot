@@ -11,4 +11,4 @@ before_deploy:
   
 deploy:
   provider: script
-   - docker push osirixfoundation/nginx-certbot:$TRAVIS_BRANCH
+  script: docker push osirixfoundation/nginx-certbot:$TRAVIS_BRANCH
