@@ -1,7 +1,5 @@
 FROM nginx:stable
 
-ENV SECRET_FILE_PATH=/run/secrets
-
 RUN apt-get update &&  apt-get install -y inotify-tools certbot openssl
 COPY certbot.sh /opt/certbot.sh
 RUN chmod +x /opt/certbot.sh 
