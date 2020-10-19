@@ -10,4 +10,4 @@ RUN chmod +x /etc/nginx/conf.d/nginx_certbot_script.sh
 COPY ssl_cert.conf /etc/nginx/conf.d/ssl_cert.conf
 COPY acme_challenge_port80.conf /etc/nginx/conf.d/acme_challenge_port80.conf
 
-CMD["nginx-debug -g 'daemon off;'"]
+CMD ["nginx-debug -g 'daemon off;'"]
