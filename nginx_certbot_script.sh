@@ -1,3 +1,5 @@
+#!/bin/bash
+
 ### Let's Encrypt
 # based on https://ilhicas.com/2019/03/02/Nginx-Letsencrypt-Docker.html
 # Create a self signed default certificate, so Ngix can start before we have
