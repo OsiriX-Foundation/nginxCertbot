@@ -11,7 +11,8 @@ if [[ ! -f /usr/share/nginx/certificates/fullchain.pem ]];then
     mkdir -p /usr/share/nginx/certificates
 fi
 
-roothost="$(awk -F/ '{sub("^[^@]+@","",$3); print $3}' <<<$NGINX_ROOT_URL)"
+rooturl=$(cat /var/nginx_root_url)
+roothost="$(awk -F/ '{sub("^[^@]+@","",$3); print $3}' <<<$rooturl)"
 
 ### If we already have certbot generated certificates, copy them over
 if [[ -f "${LETSENCRYPT_DIR:-/etc/letsencrypt}/live/$roothost/privkey.pem" ]]; then

@@ -1,6 +1,7 @@
 #!/bin/bash
 
-roothost="$(awk -F/ '{sub("^[^@]+@","",$3); print $3}' <<<$NGINX_ROOT_URL)"
+rooturl=$(cat /var/nginx_root_url)
+roothost="$(awk -F/ '{sub("^[^@]+@","",$3); print $3}' <<<$rooturl)"
 
 if [[ ! -f /var/www/certbot ]]; then
     mkdir -p /var/www/certbot
