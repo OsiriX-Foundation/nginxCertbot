@@ -9,7 +9,7 @@ certbot certonly \
         --config-dir "${LETSENCRYPT_DIR:-/etc/letsencrypt}" \
 		--agree-tos \
 		--domains testrp1.kheops.online \
-		--domains testrp2.kheops.online \
+		--domains test.kheops.online \
 		--domains testrp3.kheops.online \
 		--email "$LETS_ENCRYPT_EMAIL" \
 		--expand \
