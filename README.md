@@ -3,6 +3,8 @@
 https://certbot.eff.org/docs/using.html#nginx
 
 avoir plusieurs domaines : 
+
+
  -d DOMAIN, --domains DOMAIN, --domain DOMAIN
                         Domain names to apply. For multiple domains you can
                         use multiple -d flags or enter a comma separated list
