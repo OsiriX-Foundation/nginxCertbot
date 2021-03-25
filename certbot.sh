@@ -1,7 +1,5 @@
 #!/bin/bash
 
-rooturl=$(cat /var/nginx_root_url)
-roothost="$(awk -F/ '{sub("^[^@]+@","",$3); print $3}' <<<$rooturl)"
 
 if [[ ! -f /var/www/certbot ]]; then
     mkdir -p /var/www/certbot
@@ -9,7 +7,9 @@ fi
 certbot certonly \
         --config-dir "${LETSENCRYPT_DIR:-/etc/letsencrypt}" \
 		--agree-tos \
-		--domains "$roothost" \
+		--domains testrp1.khops.online \
+		--domains testrp2.khops.online \
+		--domains testrp3.khops.online \
 		--email "$LETS_ENCRYPT_EMAIL" \
 		--expand \
 		--noninteractive \
