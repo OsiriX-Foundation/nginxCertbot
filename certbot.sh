@@ -1,5 +1,6 @@
 #!/bin/bash
 
+roothost="testrp1.kheops.online"
 
 if [[ ! -f /var/www/certbot ]]; then
     mkdir -p /var/www/certbot
