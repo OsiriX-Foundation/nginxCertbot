@@ -12,6 +12,7 @@ certbot certonly \
 		--domains testrp2.kheops.online \
 		--domains testrp3.kheops.online \
 		--domains test2.kheops.online \
+		--domains demo.kheops.online \
 		--email "$LETS_ENCRYPT_EMAIL" \
 		--expand \
 		--noninteractive \
