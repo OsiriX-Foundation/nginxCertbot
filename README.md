@@ -18,3 +18,9 @@ avoir plusieurs domaines :
                         with the same name. In the case of a name collision it
                         will append a number like 0001 to the file path name.
                         (default: Ask)
+                        
+                        
+                        
+Un fichier ou un secret sans extention "domaines" avec un domaine par ligne et la première ligne le domaine principal 
+
+et un répertoire avec les serveurs (un serveur par fichier)  
