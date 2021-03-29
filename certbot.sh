@@ -1,6 +1,11 @@
 #!/bin/bash
 
 roothost="testrp1.kheops.online"
+domaines=$(</etc/nginx/domaines)
+first="$(cut -d',' -f2 <<<$domaines)"
+
+echo "$first"
+echo "$domaines"
 
 if [[ ! -f /var/www/certbot ]]; then
     mkdir -p /var/www/certbot
