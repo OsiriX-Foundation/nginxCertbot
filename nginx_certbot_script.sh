@@ -13,6 +13,12 @@ fi
 
 roothost="testrp1.kheops.online"
 
+domaines=$(</etc/nginx/domaines)
+first="$(cut -d',' -f2 <<<$domaines)"
+
+echo "$first"
+echo "$domaines"
+
 ### If we already have certbot generated certificates, copy them over
 if [[ -f "${LETSENCRYPT_DIR:-/etc/letsencrypt}/live/$roothost/privkey.pem" ]]; then
     cp "${LETSENCRYPT_DIR:-/etc/letsencrypt}/live/$roothost/privkey.pem" /usr/share/nginx/certificates/privkey.pem
