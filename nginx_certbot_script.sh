@@ -11,23 +11,18 @@ if [[ ! -f /usr/share/nginx/certificates/fullchain.pem ]];then
     mkdir -p /usr/share/nginx/certificates
 fi
 
-roothost="testrp1.kheops.online"
-
 domaines=$(</etc/nginx/domaines)
-first="$(cut -d',' -f1 <<<$domaines)"
-
-echo "$first"
-echo "$domaines"
+first_domaine="$(cut -d',' -f1 <<<$domaines)"
 
 ### If we already have certbot generated certificates, copy them over
-if [[ -f "${LETSENCRYPT_DIR:-/etc/letsencrypt}/live/$roothost/privkey.pem" ]]; then
-    cp "${LETSENCRYPT_DIR:-/etc/letsencrypt}/live/$roothost/privkey.pem" /usr/share/nginx/certificates/privkey.pem
-    cp "${LETSENCRYPT_DIR:-/etc/letsencrypt}/live/$roothost/fullchain.pem" /usr/share/nginx/certificates/fullchain.pem
-    cp "${LETSENCRYPT_DIR:-/etc/letsencrypt}/live/$roothost/chain.pem" /usr/share/nginx/certificates/chain.pem
+if [[ -f "${LETSENCRYPT_DIR:-/etc/letsencrypt}/live/$first_domaine/privkey.pem" ]]; then
+    cp "${LETSENCRYPT_DIR:-/etc/letsencrypt}/live/$first_domaine/privkey.pem" /usr/share/nginx/certificates/privkey.pem
+    cp "${LETSENCRYPT_DIR:-/etc/letsencrypt}/live/$first_domaine/fullchain.pem" /usr/share/nginx/certificates/fullchain.pem
+    cp "${LETSENCRYPT_DIR:-/etc/letsencrypt}/live/$first_domaine/chain.pem" /usr/share/nginx/certificates/chain.pem
 else
     openssl genrsa -out /usr/share/nginx/certificates/privkey.pem 4096
     openssl req -new -key /usr/share/nginx/certificates/privkey.pem -out /usr/share/nginx/certificates/cert.csr -nodes -subj \
-    "/C=PT/ST=World/L=World/O=$roothost/OU=kheops lda/CN=${roothost}"
+    "/C=PT/ST=World/L=World/O=$first_domaine/OU=kheops lda/CN=${first_domaine}"
     openssl x509 -req -days 365 -in /usr/share/nginx/certificates/cert.csr -signkey /usr/share/nginx/certificates/privkey.pem -out /usr/share/nginx/certificates/fullchain.pem
     cp /usr/share/nginx/certificates/fullchain.pem /usr/share/nginx/certificates/chain.pem
 fi
