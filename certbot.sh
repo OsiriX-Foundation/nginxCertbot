@@ -2,7 +2,7 @@
 
 roothost="testrp1.kheops.online"
 domaines=$(</etc/nginx/domaines)
-first="$(cut -d',' -f2 <<<$domaines)"
+first="$(cut -d',' -f1 <<<$domaines)"
 
 echo "$first"
 echo "$domaines"
