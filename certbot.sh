@@ -1,10 +1,9 @@
 #!/bin/bash
 
-roothost="testrp1.kheops.online"
 domaines=$(</etc/nginx/domaines)
 first="$(cut -d',' -f1 <<<$domaines)"
 
-echo "$first"
+echo "$first_domaine"
 echo "$domaines"
 
 if [[ ! -f /var/www/certbot ]]; then
@@ -13,11 +12,7 @@ fi
 certbot certonly \
         --config-dir "${LETSENCRYPT_DIR:-/etc/letsencrypt}" \
 		--agree-tos \
-		--domains testrp1.kheops.online \
-		--domains testrp2.kheops.online \
-		--domains testrp3.kheops.online \
-		--domains test2.kheops.online \
-		--domains demo.kheops.online \
+		--domains $domaines \
 		--email "$LETS_ENCRYPT_EMAIL" \
 		--expand \
 		--noninteractive \
@@ -25,8 +20,8 @@ certbot certonly \
 		--webroot-path /var/www/certbot \
 		$OPTIONS || true
 
-if [[ -f "${LETSENCRYPT_DIR:-/etc/letsencrypt}/live/$roothost/privkey.pem" ]]; then
-    cp "${LETSENCRYPT_DIR:-/etc/letsencrypt}/live/$roothost/privkey.pem" /usr/share/nginx/certificates/privkey.pem
-    cp "${LETSENCRYPT_DIR:-/etc/letsencrypt}/live/$roothost/fullchain.pem" /usr/share/nginx/certificates/fullchain.pem
-    cp "${LETSENCRYPT_DIR:-/etc/letsencrypt}/live/$roothost/chain.pem" /usr/share/nginx/certificates/chain.pem
+if [[ -f "${LETSENCRYPT_DIR:-/etc/letsencrypt}/live/$first_domaine/privkey.pem" ]]; then
+    cp "${LETSENCRYPT_DIR:-/etc/letsencrypt}/live/$first_domaine/privkey.pem" /usr/share/nginx/certificates/privkey.pem
+    cp "${LETSENCRYPT_DIR:-/etc/letsencrypt}/live/$first_domaine/fullchain.pem" /usr/share/nginx/certificates/fullchain.pem
+    cp "${LETSENCRYPT_DIR:-/etc/letsencrypt}/live/$first_domaine/chain.pem" /usr/share/nginx/certificates/chain.pem
 fi
