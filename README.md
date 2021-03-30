@@ -1,5 +1,14 @@
 # nginxCertbot
 
+bind a volume :
+/etc/nginx/reverse_proxy/host1.conf
+/etc/nginx/reverse_proxy/host2.conf
+
+/etc/nginx/domaines    'domaines' is a file with all hostname seperate by a COMMA
+
+
+
+
 https://certbot.eff.org/docs/using.html#nginx
 
 avoir plusieurs domaines : 
