@@ -1,8 +1,8 @@
 # nginxCertbot
 
 bind a volume :
-/etc/nginx/reverse_proxy/host1.conf
-/etc/nginx/reverse_proxy/host2.conf
+- /etc/nginx/reverse_proxy/host1.conf
+- /etc/nginx/reverse_proxy/host2.conf
 
 ```
 server {
@@ -16,9 +16,10 @@ server {
 }
 ```
 
-
-/etc/nginx/domaines    `domaines` is a file with all hostname seperate by a COMMA
-
+- /etc/nginx/domaines    `domaines` is a file with all hostname seperate by a COMMA
+```
+host1,host2
+```
 
 
 
