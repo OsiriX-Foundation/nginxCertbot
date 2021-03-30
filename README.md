@@ -4,7 +4,20 @@ bind a volume :
 /etc/nginx/reverse_proxy/host1.conf
 /etc/nginx/reverse_proxy/host2.conf
 
-/etc/nginx/domaines    'domaines' is a file with all hostname seperate by a COMMA
+'''
+server {
+    listen 443 ssl http2;
+    server_name test2.kheops.online;
+
+    location / {
+      proxy_pass http://10.5.5.28:8088;
+      proxy_redirect http://10.5.5.28:8088 https://test2.kheops.online;
+    }
+}
+'''
+
+
+/etc/nginx/domaines    `domaines` is a file with all hostname seperate by a COMMA
 
 
 
