@@ -1,4 +1,4 @@
-FROM nginx:1.19.8
+FROM nginx:1.20.0
 
 RUN apt-get update &&  apt-get install -y inotify-tools certbot openssl
 COPY certbot.sh /opt/certbot.sh
