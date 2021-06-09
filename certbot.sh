@@ -1,10 +1,7 @@
 #!/bin/bash
 
-domains=$(</etc/nginx/domaines)
+domains=$(</etc/nginx/domains)
 first_domain="$(cut -d',' -f1 <<<$domains)"
-
-echo "$first_domain"
-echo "$domains"
 
 if [[ ! -f /var/www/certbot ]]; then
     mkdir -p /var/www/certbot
